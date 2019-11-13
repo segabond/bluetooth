@@ -1,20 +1,23 @@
-# Setting up bluetooth Java BlueCove service on Raspberry PI 4
+# Preparing Raspberry PI for Bluetooth BlueCove JVM stack
 
 ## Step 1: System packages
+
+```bash
 sudo apt-get install bluez python-bluez libbluetooth-dev
+```
 
 ## Step 2: Configure bluetooth daemon for socket support
 
 ```bash
 sudo nano /etc/systemd/system/bluetooth.target.wants/bluetooth.service
 ```
-change
-
-`ExecStart=/usr/lib/bluetooth/bluetoothd -C`
+change `ExecStart=/usr/lib/bluetooth/bluetoothd -C`
 
 *Optional*: If you want to change the bluetooth device name permanently, you have to create a file called `/etc/machine-info` which should have the following content:
 
-`PRETTY_HOSTNAME=device-name`
+```
+PRETTY_HOSTNAME=device-name
+```
 
 then reload config and restart bluetoothd
 
